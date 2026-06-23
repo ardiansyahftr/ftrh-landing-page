@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fitrah Eka Ardiansyah</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --white: #ffffff;
+    --gray-50: #f9f9f7;
+    --gray-100: #f0ede8;
+    --gray-200: #dedad2;
+    --gray-400: #9a9690;
+    --gray-600: #5f5c57;
+    --gray-900: #1a1917;
+    --accent: #2d5a3d;
+    --accent-light: #e8f0eb;
+    --radius: 12px;
+  }
+  html, body { font-family: 'Inter', sans-serif; color: var(--gray-900); background: var(--white); }
+
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 2rem;
+    border-bottom: 1px solid var(--gray-100);
+    position: sticky; top: 0; background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px); z-index: 100;
+  }
+  .nav-logo { font-size: 15px; font-weight: 600; letter-spacing: -0.3px; color: var(--gray-900); text-decoration: none; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a { font-size: 14px; color: var(--gray-600); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gray-900); }
+
+  .hero { max-width: 680px; margin: 0 auto; padding: 5rem 2rem 3rem; }
+  .hero-tag {
+    display: inline-block; font-size: 12px; font-weight: 500; letter-spacing: 0.8px;
+    text-transform: uppercase; color: var(--accent);
+    background: var(--accent-light); padding: 4px 12px;
+    border-radius: 20px; margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Lora', serif; font-size: 42px; font-weight: 400;
+    line-height: 1.2; letter-spacing: -0.5px;
+    color: var(--gray-900); margin-bottom: 1rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero p { font-size: 17px; color: var(--gray-600); line-height: 1.7; max-width: 520px; margin-bottom: 2rem; }
+  .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--gray-900); color: var(--white);
+    padding: 10px 20px; border-radius: 8px;
+    font-size: 14px; font-weight: 500; text-decoration: none; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: transparent; color: var(--gray-600);
+    border: 1px solid var(--gray-200); padding: 10px 20px; border-radius: 8px;
+    font-size: 14px; font-weight: 400; text-decoration: none; transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: var(--gray-50); color: var(--gray-900); }
+
+  .divider { max-width: 680px; margin: 0 auto; padding: 0 2rem; }
+  .divider hr { border: none; border-top: 1px solid var(--gray-100); }
+
+  .section { max-width: 680px; margin: 0 auto; padding: 3rem 2rem; }
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 1.2px;
+    text-transform: uppercase; color: var(--gray-400); margin-bottom: 1.5rem;
+  }
+
+  .about-grid { display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem; align-items: start; }
+  .avatar {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; font-weight: 600; color: var(--accent); flex-shrink: 0;
+  }
+  .about-text h2 { font-size: 18px; font-weight: 500; margin-bottom: 0.4rem; }
+  .about-text .role { font-size: 14px; color: var(--accent); font-weight: 500; margin-bottom: 0.75rem; }
+  .about-text p { font-size: 15px; color: var(--gray-600); line-height: 1.7; }
+  .skills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+  .skill-tag {
+    font-size: 12px; padding: 3px 10px; border-radius: 20px;
+    background: var(--gray-100); color: var(--gray-600);
+  }
+
+  .posts-list { display: flex; flex-direction: column; }
+  .post-item {
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: start; gap: 1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--gray-100);
+    text-decoration: none; cursor: pointer; transition: all 0.15s;
+  }
+  .post-item:first-child { border-top: 1px solid var(--gray-100); }
+  .post-item:hover .post-title { color: var(--accent); }
+  .post-cat {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.6px;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 4px;
+  }
+  .post-title { font-size: 15px; font-weight: 500; color: var(--gray-900); line-height: 1.4; margin-bottom: 4px; transition: color 0.15s; }
+  .post-desc { font-size: 13px; color: var(--gray-400); line-height: 1.5; }
+  .post-date { font-size: 12px; color: var(--gray-400); white-space: nowrap; padding-top: 2px; }
+
+  .contact-card {
+    background: var(--gray-50); border-radius: var(--radius);
+    padding: 2rem; text-align: center; border: 1px solid var(--gray-100);
+  }
+  .contact-card h2 { font-family: 'Lora', serif; font-size: 22px; font-weight: 400; margin-bottom: 0.5rem; }
+  .contact-card p { font-size: 15px; color: var(--gray-600); margin-bottom: 1.5rem; }
+  .social-links { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+  .social-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; border-radius: 8px;
+    border: 1px solid var(--gray-200); background: var(--white);
+    font-size: 13px; color: var(--gray-600); text-decoration: none; transition: all 0.2s;
+  }
+  .social-btn:hover { background: var(--gray-900); color: var(--white); border-color: var(--gray-900); }
+
+  footer {
+    text-align: center; padding: 2rem;
+    font-size: 13px; color: var(--gray-400);
+    border-top: 1px solid var(--gray-100);
+    max-width: 680px; margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Fitrah Eka ✦</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <span class="hero-tag">Personal Blog</span>
+  <h1>Halo, aku <em>Fitrah</em> —<br>developer & penulis.</h1>
+  <p>Aku menulis tentang teknologi, proses belajar, dan hal-hal kecil yang menarik perhatianku. Selamat datang di sudut internetku.</p>
+  <div class="hero-btns">
+    <a href="#blog" class="btn-primary">Baca tulisanku →</a>
+    <a href="#contact" class="btn-secondary">Hubungi aku</a>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="section" id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div class="avatar">FE</div>
+    <div class="about-text">
+      <h2>Fitrah Eka Ardiansyah</h2>
+      <div class="role">Web Developer · Malang, Indonesia</div>
+      <p>Suka ngulik hal-hal baru di dunia web dan teknologi. Kadang nulis, kadang ngoding, sering keduanya sekaligus sambil ngopi.</p>
+      <div class="skills">
+        <span class="skill-tag">HTML & CSS</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">ASP.NET</span>
+        <span class="skill-tag">Web Design</span>
+        <span class="skill-tag">Linux</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="section" id="blog">
+  <div class="section-label">Tulisan terbaru</div>
+  <div class="posts-list">
+    <div class="post-item">
+      <div>
+        <div class="post-cat">Tutorial</div>
+        <div class="post-title">Deploy HTML ke GitHub Pages dengan custom domain gratis</div>
+        <div class="post-desc">Cara mudah menerbitkan website statis dengan domain sendiri tanpa biaya server.</div>
+      </div>
+      <div class="post-date">Jun 2026</div>
+    </div>
+    <div class="post-item">
+      <div>
+        <div class="post-cat">Catatan</div>
+        <div class="post-title">Kenapa aku mulai nulis blog lagi di 2026</div>
+        <div class="post-desc">Refleksi singkat tentang kebiasaan menulis dan kenapa itu penting buat seorang developer.</div>
+      </div>
+      <div class="post-date">Jun 2026</div>
+    </div>
+    <div class="post-item">
+      <div>
+        <div class="post-cat">Teknologi</div>
+        <div class="post-title">Tools yang aku pakai sehari-hari sebagai developer</div>
+        <div class="post-desc">Kumpulan aplikasi dan ekstensi yang bikin workflow jadi lebih efisien.</div>
+      </div>
+      <div class="post-date">Mei 2026</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="section" id="contact">
+  <div class="contact-card">
+    <h2>Mari ngobrol 👋</h2>
+    <p>Punya proyek, pertanyaan, atau sekadar ingin sapa? Pintu selalu terbuka.</p>
+    <div class="social-links">
+      <a href="mailto:fitrah@fitrahard.web.id" class="social-btn">✉ Email</a>
+      <a href="https://github.com/fitrahard" class="social-btn">🐙 GitHub</a>
+      <a href="#" class="social-btn">💼 LinkedIn</a>
+      <a href="#" class="social-btn">🐦 Twitter / X</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Fitrah Eka Ardiansyah · fitrahard.web.id · dibuat dengan ☕ dan semangat</p>
+</footer>
+
+</body>
+</html>
